@@ -1,0 +1,548 @@
+' Qatra report diagrams - editable PlantUML source
+' Each diagram uses a restrained blue-gray academic style.
+
+@startuml technology-stack
+!theme plain
+skinparam dpi 180
+skinparam backgroundColor white
+skinparam defaultFontName "Times New Roman"
+skinparam componentBackgroundColor #EFF4F8
+skinparam componentBorderColor #264967
+left to right direction
+package "Experience" {
+[Angular 20] as Angular
+component "PrimeNG / MapLibre / Chart.js" as UI
+}
+package "Application" {
+[Java 21] as Java
+[Spring Boot 4] as Spring
+component "Spring Security / JPA / WebSocket" as Boot
+}
+package "Data and Events" {
+database PostgreSQL
+queue Kafka
+database Redis
+}
+package "Delivery" {
+[Docker] as Docker
+component "k3s / Kubernetes" as K3s
+component "GitHub Actions / GHCR" as CI
+}
+package "Observability" {
+component "Prometheus / Grafana" as Metrics
+component "Loki / Promtail" as Logs
+[Jaeger] as Traces
+}
+Angular --> Spring
+UI --> Angular
+Spring --> PostgreSQL
+Spring --> Kafka
+Spring --> Redis
+CI --> Docker
+Docker --> K3s
+K3s --> Metrics
+K3s --> Logs
+K3s --> Traces
+@enduml
+
+@startuml global-use-case
+!include style.puml
+top to bottom direction
+actor Donor
+actor "Center Staff" as Staff
+actor "Center Admin" as Admin
+actor "Super Admin" as Super
+rectangle Qatra {
+ usecase "Manage identity\nand profile" as UC1
+ usecase "Manage availability\nand eligibility" as UC2
+ usecase "Browse centers and\nmanage appointments" as UC3
+ usecase "Respond to\nemergencies" as UC4
+ usecase "Check in, screen, and\ncomplete donations" as UC5
+ usecase "Manage center, slots,\nstaff, and reports" as UC6
+ usecase "Create, track, and\nresolve emergencies" as UC7
+ usecase "Govern users, roles,\ncenters, GDPR, and audit" as UC8
+ usecase "Match donors and\nsend notifications" as UC9
+}
+Donor --> UC1
+Donor --> UC2
+Donor --> UC3
+Donor --> UC4
+Staff --> UC5
+Staff --> UC7
+Admin --> UC6
+Super --> UC8
+UC7 ..> UC9 : <<include>>
+UC9 ..> UC2 : <<include>>
+@enduml
+
+@startuml kanban-workflow
+!theme plain
+skinparam dpi 180
+skinparam backgroundColor white
+skinparam defaultFontName "Times New Roman"
+skinparam rectangleBackgroundColor #EFF4F8
+skinparam rectangleBorderColor #264967
+left to right direction
+rectangle Backlog
+rectangle Ready
+rectangle "In Progress\nWIP: 1" as Doing
+rectangle Review
+rectangle Verification
+rectangle Done
+Backlog -[#264967]-> Ready : prioritized
+Ready -[#264967]-> Doing : pull
+Doing -[#264967]-> Review
+Review -[#264967]-> Verification
+Verification -[#264967]-> Done : accepted
+Verification -[#A65A3A]-> Doing : correction
+@enduml
+
+@startuml increment-roadmap
+!include style.puml
+top to bottom direction
+rectangle "1. IDENTITY AND CENTERS\nAccounts - roles - center approval" as I1
+rectangle "2. DONORS AND APPOINTMENTS\nProfiles - eligibility - slots - booking" as I2
+rectangle "3. STAFF OPERATIONS\nCheck-in - screening - completion" as I3
+rectangle "4. EMERGENCY LIFECYCLE\nCreate - activate - track - resolve" as I4
+rectangle "5. MATCHING AND NOTIFICATIONS\nCompatibility - distance - alerts - responses" as I5
+rectangle "6. ANALYTICS, ADMIN AND OPERATIONS\nDashboards - audit - deployment - observability" as I6
+I1 --> I2
+I2 --> I3
+I2 --> I4
+I4 --> I5
+I3 --> I6
+I5 --> I6
+@enduml
+
+@startuml logical-architecture
+!theme plain
+skinparam dpi 190
+skinparam backgroundColor white
+skinparam defaultFontName "Times New Roman"
+skinparam componentBackgroundColor #EFF4F8
+skinparam componentBorderColor #264967
+left to right direction
+actor User
+node "Web Tier" {
+component "Nginx / Ingress" as Nginx
+[Angular 20 SPA] as SPA
+}
+node "Application Tier" {
+[Donation Service\nSpring Boot] as Donation
+[Notification Service\nSpring Boot] as Notification
+}
+node "Data and Messaging" {
+database "PostgreSQL" as PG
+queue "Kafka" as K
+database "Redis" as R
+}
+cloud "Delivery Channels" {
+[WebSocket] as WS
+[Email Provider] as Email
+}
+User --> Nginx
+Nginx --> SPA
+SPA --> Donation : REST / JWT
+SPA --> Notification : REST / WebSocket
+Donation --> PG
+Donation --> K : domain events
+Notification --> K : consume
+Notification --> PG
+Notification --> R
+Notification --> WS
+Notification --> Email
+@enduml
+
+@startuml global-domain-model
+!include style.puml
+hide circle
+top to bottom direction
+class User {
+  +id: UUID
+  +email: String
+  +status: AccountStatus
+  +role: Role
+  +activate()
+  +disable()
+}
+class DonorProfile {
+  +bloodType: BloodType
+  +available: boolean
+  +eligibleFrom: LocalDate
+  +reliabilityScore: int
+  +updateAvailability()
+  +isEligibleOn(date)
+}
+class HealthQuestionnaire {
+  +updatedAt: Instant
+  +restrictionStatus: RestrictionStatus
+  +evaluateRestrictions()
+}
+class DonationCenter {
+  +id: UUID
+  +name: String
+  +status: CenterStatus
+  +location: GeoPoint
+  +approve()
+  +publishSlots()
+}
+class StaffProfile {
+  +role: StaffRole
+  +active: boolean
+  +assignToCenter()
+}
+class Slot {
+  +startTime: Instant
+  +capacity: int
+  +state: SlotState
+  +reserve()
+  +release()
+}
+class Appointment {
+  +id: UUID
+  +scheduledAt: Instant
+  +status: AppointmentStatus
+  +outcome: DonationOutcome
+  +confirm()
+  +complete()
+}
+class HealthScreening {
+  +decision: ScreeningDecision
+  +recordedAt: Instant
+  +recordDecision()
+}
+class Emergency {
+  +id: UUID
+  +bloodType: BloodType
+  +deadline: Instant
+  +status: EmergencyStatus
+  +location: GeoPoint
+  +activate()
+  +resolve()
+}
+class EmergencyResponse {
+  +decision: ResponseDecision
+  +respondedAt: Instant
+  +accept()
+  +decline()
+}
+class Notification {
+  +channel: NotificationChannel
+  +status: DeliveryStatus
+  +createdAt: Instant
+  +markDispatched()
+}
+class AuditLog {
+  +actorId: UUID
+  +action: String
+  +timestamp: Instant
+  +record()
+}
+User "1" -- "0..1" DonorProfile : owns
+User "1" -- "0..*" StaffProfile : identifies
+User "1" -- "0..*" AuditLog : produces
+DonorProfile "1" *-- "0..1" HealthQuestionnaire : completes
+DonationCenter "1" *-- "0..*" StaffProfile : employs
+DonationCenter "1" *-- "0..*" Slot : publishes
+DonorProfile "1" -- "0..*" Appointment : books
+Slot "1" -- "0..*" Appointment : schedules
+Appointment "1" *-- "0..1" HealthScreening : records
+DonationCenter "1" -- "0..*" Emergency : coordinates
+Emergency "1" *-- "0..*" EmergencyResponse : collects
+DonorProfile "1" -- "0..*" EmergencyResponse : submits
+Emergency "1" -- "0..*" Notification : triggers
+@enduml
+
+@startuml appointment-activity
+!include style.puml
+start
+:Browse centers and available slots;
+:Select slot and submit booking;
+:Authenticate donor;
+if (Profile and eligibility valid?) then (yes)
+  :Lock and recheck slot capacity;
+  if (Capacity available?) then (yes)
+    :Create appointment;
+    :Publish confirmation event;
+    :Receive confirmation;
+    :Check in donor on appointment day;
+    :Record health screening;
+    if (Screening accepted?) then (yes)
+      :Complete donation;
+      :Update history and next eligibility date;
+      :Publish completion notification;
+    else (no)
+      :Record deferral outcome;
+    endif
+  else (no)
+    :Return slot conflict;
+  endif
+else (no)
+  :Reject booking with validation reason;
+endif
+stop
+@enduml
+
+@startuml emergency-matching-activity
+!include style.puml
+start
+:Create emergency request;
+:Validate blood need, location and deadline;
+:Activate emergency;
+:Load active donor candidates;
+:Filter compatibility, eligibility and availability;
+:Calculate distance and rank candidates;
+repeat
+  :Select uncontacted donors in current radius;
+  :Create idempotent notification intents;
+  :Dispatch through allowed channels;
+  :Collect accept or decline responses;
+  if (Required response reached?) then (yes)
+    :Mark emergency matched;
+    break
+  else (no)
+    :Expand radius within policy;
+  endif
+repeat while (Time and radius remain?) is (yes)
+if (Matched?) then (yes)
+  :Coordinate confirmed donors;
+else (no)
+  :Escalate or expire request;
+endif
+stop
+@enduml
+
+@startuml authentication-sequence
+!include style.puml
+actor User
+participant "Angular App" as SPA
+participant "Auth Controller" as API
+participant "Authentication Service" as Auth
+database "User Repository" as DB
+participant "JWT Service" as JWT
+User -> SPA : submit email and password
+SPA -> API : POST login
+API -> Auth : authenticate(credentials)
+Auth -> DB : find active user
+DB --> Auth : user and password hash
+Auth -> Auth : verify password and status
+Auth -> JWT : issue signed token
+JWT --> API : access token
+API --> SPA : authenticated response
+SPA -> API : protected request + Bearer token
+API -> JWT : validate signature and expiry
+JWT --> API : identity and roles
+API --> SPA : authorized resource
+@enduml
+
+@startuml security-flow
+!include style.puml
+start
+:Receive HTTP request;
+if (Bearer token present?) then (yes)
+  :Validate signature and expiry;
+  if (Account and token valid?) then (yes)
+    :Build security context;
+    if (Role authorized?) then (yes)
+      if (Resource scope valid?) then (yes)
+        :Execute use case;
+      else (no)
+        :Return 403 Forbidden;
+      endif
+    else (no)
+      :Return 403 Forbidden;
+    endif
+  else (no)
+    :Return 401 Unauthorized;
+  endif
+else (no)
+  :Allow public endpoint or return 401;
+endif
+stop
+@enduml
+
+@startuml appointment-sequence
+!include style.puml
+actor Donor
+actor Staff
+participant "Angular App" as UI
+participant "Appointment API" as API
+participant "Appointment Service" as Service
+database "Appointment / Slot Repositories" as DB
+Donor -> UI : choose center, date, and slot
+UI -> API : create appointment
+API -> Service : validate donor and request
+Service -> DB : lock/check slot and conflicts
+DB --> Service : available
+Service -> DB : save appointment atomically
+DB --> Service : confirmed appointment
+Service --> UI : confirmation
+Staff -> UI : check in donor
+UI -> API : update status and screening
+API -> Service : authorize center staff
+Service -> DB : save screening and outcome
+Service -> DB : update history and eligibility
+Service --> UI : completed workflow
+@enduml
+
+@startuml physical-deployment
+!theme plain
+skinparam dpi 180
+skinparam backgroundColor white
+skinparam defaultFontName "Times New Roman"
+skinparam nodeBackgroundColor #EFF4F8
+skinparam nodeBorderColor #264967
+left to right direction
+cloud Internet
+node "k3s Cluster / qatra namespace" {
+ node "Ingress" {
+ [Nginx / Auth Middleware]
+ }
+ node "Application Pods" {
+ [Angular Frontend]
+[Donation Service]
+ [Notification Service]
+ }
+ node "Stateful Services" {
+ database PostgreSQL
+queue Kafka
+ database Redis
+ }
+ node "Observability" {
+ [Prometheus]
+[Grafana]
+[Loki / Promtail]
+ [Jaeger]
+ }
+ node "Administration" {
+ [pgAdmin]
+[RedisInsight]
+ [Kubernetes Dashboard]
+ }
+}
+Internet --> [Nginx / Auth Middleware] : HTTPS
+[Nginx / Auth Middleware] --> [Angular Frontend]
+[Nginx / Auth Middleware] --> [Donation Service]
+[Nginx / Auth Middleware] --> [Notification Service]
+[Donation Service] --> PostgreSQL
+[Donation Service] --> Kafka
+[Notification Service] --> Kafka
+[Notification Service] --> PostgreSQL
+[Notification Service] --> Redis
+[Prometheus] --> [Donation Service]
+[Prometheus] --> [Notification Service]
+[Grafana] --> [Prometheus]
+@enduml
+
+@startuml emergency-sequence
+!include style.puml
+actor Coordinator
+actor Donor
+participant "Emergency API" as API
+participant "Emergency Service" as ES
+participant "Matching Engine" as Match
+database "Donor / Emergency Repositories" as DB
+queue Kafka
+participant "Notification Service" as NS
+Coordinator -> API : create emergency
+API -> ES : validate and persist
+ES -> DB : save active emergency
+ES -> Match : start matching(emergency)
+Match -> DB : query compatible, eligible, available donors
+DB --> Match : candidate set
+Match -> Match : distance, ranking, tier selection
+Match -> Kafka : publish alert intents
+Kafka -> NS : consume event
+NS -> Donor : alert through allowed channels
+Donor -> API : accept or decline
+API -> ES : record response
+ES -> DB : update progress
+ES --> Coordinator : current emergency status
+@enduml
+
+@startuml notification-event-flow
+!include style.puml
+top to bottom direction
+[Donation Service] as DS
+queue "Kafka Topic" as K
+[Notification Consumer] as NC
+database "Notification Store" as Store
+[Preference Resolver] as Pref
+[WebSocket Channel] as WS
+[Email Channel] as Mail
+[Angular Notification Store] as Angular
+cloud "Email Provider" as Provider
+component "Retry / Failure Policy" as Retry
+DS --> K : event + correlation ID
+K --> NC : at-least-once delivery
+NC --> Store : deduplicated record
+NC --> Pref
+Pref --> WS
+Pref --> Mail
+WS --> Angular
+Mail --> Provider
+NC --> Retry : temporary error
+Retry --> K : bounded retry
+@enduml
+
+@startuml cicd-pipeline
+!include style.puml
+actor Developer
+participant GitHub
+participant "GitHub Actions" as Actions
+participant "Maven Test Matrix" as Tests
+participant "Container Registry" as Registry
+participant "k3s Server" as K3s
+Developer -> GitHub : push or pull request
+GitHub -> Actions : trigger path-filtered workflow
+Actions -> Tests : run donation and notification tests
+alt pull request
+  Tests --> Actions : verification result
+  Actions --> GitHub : publish check status
+else push to master
+  Actions -> Registry : build and publish image
+  Actions -> K3s : connect through SSH
+  K3s -> K3s : import image and restart deployment
+  note right of K3s
+    Readiness, smoke checks and rollback
+    remain recommended hardening steps.
+  end note
+end
+@enduml
+
+@startuml observability
+!theme plain
+skinparam dpi 180
+skinparam backgroundColor white
+skinparam defaultFontName "Times New Roman"
+skinparam componentBackgroundColor #EFF4F8
+skinparam componentBorderColor #264967
+left to right direction
+package "Qatra Workloads" {
+[Donation Service] as DS
+[Notification Service] as NS
+component "Nginx / k3s Nodes" as Infra
+}
+package "Metrics" {
+[Prometheus] as P
+[Grafana Dashboards] as G
+}
+package "Logs" {
+[Promtail] as PT
+[Loki] as L
+}
+package "Traces" {
+[Jaeger] as J
+}
+DS --> P : Actuator metrics
+NS --> P : Actuator metrics
+Infra --> P : infrastructure metrics
+P --> G
+DS --> PT : structured logs
+NS --> PT : structured logs
+Infra --> PT : container logs
+PT --> L
+L --> G
+DS --> J : trace spans
+NS --> J : trace spans
+@enduml

@@ -1,0 +1,100 @@
+\chapter{Emergency Matching and Notification Intelligence}
+
+\section*{Introduction}
+Emergency coordination is Qatra's most time-sensitive capability. A broad notification blast is easy to implement but produces fatigue, irrelevant alerts, and weak accountability. Qatra instead models matching as a staged decision process and notification as a separate delivery responsibility.
+
+\section{Matching Inputs}
+The candidate set is constrained by information from several domains:
+
+\begin{itemize}
+  \item blood-type compatibility with the emergency requirement;
+  \item active account and donor profile state;
+  \item completed onboarding and known eligibility information;
+  \item current availability and notification preferences;
+  \item next eligible date and permanent restriction state;
+  \item donor and emergency locations;
+  \item prior response or reliability information where implemented;
+  \item emergency deadline and current lifecycle state.
+\end{itemize}
+
+Filtering should remove candidates who cannot safely or legitimately be contacted. Ranking should order remaining candidates; it must not reintroduce filtered candidates.
+
+\section{Blood Compatibility}
+Compatibility is not equivalent to identical blood type. Red-cell donation rules allow some donor types to serve multiple recipient types, but the exact operational rule depends on the requested product and clinical policy~\cite{redcrossCompatibility}. The World Health Organization also recommends mandatory screening of donated blood for transfusion-transmissible infections and testing for ABO and RhD groups~\cite{whoDonationTesting}. The platform model uses blood-type relationships to reduce irrelevant outreach; final clinical decisions remain under qualified staff responsibility.
+
+Compatibility logic should be centralized and tested as a domain function. Duplicating it in the frontend, SQL, and notification service would create inconsistent behavior. The frontend may display explanatory information, but the backend remains authoritative.
+
+\section{Eligibility and Availability}
+Eligibility combines permanent and temporary conditions. A completed donation can set a future eligible date. A health restriction can prevent matching until reviewed. Availability is a donor preference and may change more frequently than medical status. The matcher therefore evaluates both categories at processing time rather than trusting an old candidate export. These software checks support, but never replace, professional donor-suitability assessment~\cite{whoDonorSelection}.
+
+A scheduled job may restore eligibility when a cooldown passes. Such a job must be idempotent: running it twice should not produce duplicate history or notifications. Changes to permanent restrictions should be auditable and limited to authorized roles.
+
+\section{Geographical Distance}
+Qatra compares the donor's location with the location of the emergency to estimate how close the donor is. This estimate helps the platform contact nearby compatible donors first. It represents direct geographical distance; it does not predict the actual travel time because roads, traffic, and available transport are not considered. For privacy, precise donor coordinates are not exposed in emergency notifications.
+
+\section{Ranking and Tiered Expansion}
+After compatibility and eligibility checks, Qatra gives priority to donors who are nearby, available, reliable, and willing to receive emergency requests through the selected communication channel. These criteria make the matching decision understandable without relying on a complex or opaque formula.
+
+The search starts within the nearest configured area. If too few donors accept the request, Qatra gradually expands the search to a wider area. Donors who have already been contacted are recorded so that they do not receive the same alert repeatedly.
+
+\begin{table}[H]
+\centering\small
+\begin{tabularx}{\textwidth}{|P{2.3cm}|P{3.1cm}|Y|Y|}
+\hline
+\rowcolor{tableheader}\textbf{Stage} & \textbf{Candidate scope} & \textbf{Action} & \textbf{Stop condition}\\ \hline
+Initial & Closest eligible donors & Rank and notify first group & Required responses or wait threshold\\ \hline
+Expanded & Wider radius, excluding contacted donors & Notify next ranked group & Required responses, max radius, or deadline\\ \hline
+Final & Remaining allowed radius & Last controlled outreach & Resolution, expiry, or operator action\\ \hline
+\end{tabularx}
+\caption{Conceptual tiered emergency matching strategy}
+\label{tab:matching-tiers}
+\end{table}
+
+Figure~\ref{fig:emergency-matching-activity} expresses the same policy as an activity flow with explicit responsibility partitions, decisions, radius expansion, and termination conditions.
+
+\diagram[0.64\textheight]{emergency-matching-activity}{Emergency matching and notification activity diagram}
+
+\section{Event Publication and Consistency}
+After candidate selection, a domain action creates notification intent. Publishing directly after a database commit can lose an event if the broker is unavailable; publishing before commit can announce work that later rolls back. A transactional outbox is a common future hardening pattern: persist domain state and an outbox record atomically, then publish asynchronously~\cite{outbox}.
+
+The available project uses Kafka-oriented communication, but the report does not claim a complete outbox implementation unless present in the source. This distinction is important in an academic assessment: an architectural recommendation is not presented as completed functionality.
+
+\section{Notification Channels}
+The notification service can support in-application updates, WebSocket delivery, and email-oriented communication. Channel selection respects donor preferences and the urgency policy. An in-app record provides durable history, while WebSocket provides immediate update when the user is connected. Email can reach an offline user but depends on an external provider and deliverability.
+
+Notification payloads should contain the minimum necessary data. An emergency alert may include blood need, approximate area, deadline, and response action without exposing another person's medical identity.
+
+\section{Delivery State, Retry, and Idempotency}
+Delivery has more states than sent or failed. A robust model distinguishes created, queued, dispatched, acknowledged by provider, delivered where supported, read, responded, retryable failure, and terminal failure. The implemented model may use a subset, but the distinction guides observability.
+
+At-least-once broker delivery means consumers must tolerate duplicates. An event identifier or compound business key can prevent duplicate notification records. Retry should use bounded exponential backoff and classify permanent errors such as invalid addresses separately from temporary provider or network failures. Exhausted retries belong in a reviewable dead-letter path.
+
+\section{Real-Time Updates}
+WebSocket connections allow notification counts, emergency progress, and status changes to appear without polling. The authenticated connection must be associated with the correct user, and subscription destinations must not permit access to another donor's messages. Reconnection should refresh authoritative state because messages can be missed while disconnected.
+
+\section{Reliability Score and Fairness}
+The use-case model includes a reliability score between 0 and 100. Such a score can help order candidates, but it must not punish users for circumstances beyond their control or become an unexplained barrier. Inputs should be limited, interpretable, and reviewable. Declining an emergency should not automatically be treated as misconduct; explicit availability and response history need contextual treatment.
+
+Fairness also concerns geography. Always selecting the closest highly reliable donors can repeatedly burden the same group. Rotation, recent-contact limits, and preference-aware ranking can reduce fatigue. These are governance choices that should be documented and evaluated with real operational data before production use.
+
+\section{GDPR and Audit}
+Matching processes location, health-derived eligibility, and behavior. Under the GDPR, health data belongs to a special category and personal-data processing must respect principles including purpose limitation and data minimization~\cite{gdpr}. Donors should be able to update location and preferences and request account deletion. Administrators need a controlled workflow to reconcile deletion with legally required records. Audit logs should record decisions without becoming a second uncontrolled health-data store.
+
+\section{Failure Scenarios}
+\begin{longtable}{|P{3.4cm}|P{5.1cm}|P{4.9cm}|}
+\hline
+\rowcolor{tableheader}\textbf{Failure} & \textbf{Risk} & \textbf{Response}\\ \hline
+Kafka unavailable & Notification event cannot be dispatched & Retry publication; use health monitoring; consider outbox\\ \hline
+Notification provider timeout & Unknown or delayed delivery & Bounded retry with idempotency key\\ \hline
+WebSocket disconnected & User misses immediate update & Persist notification and refresh on reconnect\\ \hline
+Stale donor availability & Irrelevant alert & Re-evaluate current state before dispatch\\ \hline
+Emergency resolved during expansion & Late notifications & Check emergency state before every tier/batch\\ \hline
+Duplicate event & Repeated alert and fatigue & Deduplicate by event/business identifier\\ \hline
+Missing coordinates & Distance cannot be calculated & Exclude from proximity tier or use explicit fallback policy\\ \hline
+Clock or deadline mismatch & Alerts after expiry & Store UTC timestamps and validate centrally\\ \hline
+\caption{Emergency matching and notification failure analysis}
+\label{tab:matching-failures}
+\end{longtable}
+
+\section*{Conclusion}
+Targeted matching combines domain constraints, geographical reasoning, transparent ranking, and staged expansion. Reliable notification adds asynchronous delivery, idempotency, retry, privacy, and real-time authorization. The final chapter examines whether the surrounding engineering system can build, deploy, observe, and validate these capabilities responsibly.

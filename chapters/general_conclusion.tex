@@ -1,0 +1,14 @@
+\chapter*{General Conclusion}
+\addcontentsline{toc}{chapter}{General Conclusion}
+
+This end-of-studies project addressed the fragmentation of blood-donation and emergency coordination through the design and implementation of Qatra. The platform unifies donor onboarding, health and availability information, center discovery, appointment scheduling, staff operations, donation outcomes, emergency requests, candidate matching, notification, governance, and audit-oriented analytics.
+
+The solution combines an Angular 20 frontend with Java 21 and Spring Boot backend services. A domain-oriented donation service contains the principal business contexts, while a separate notification service supports asynchronous and real-time delivery concerns. PostgreSQL provides relational persistence, Kafka supports event exchange, and Redis participates in the runtime environment. Docker, k3s, Nginx, GitHub Actions, Prometheus, Grafana, Loki, Promtail, and Jaeger extend the project from application code to deployable and observable infrastructure.
+
+Kanban provided a suitable delivery method for work that continuously crossed analysis, backend, frontend, infrastructure, and documentation. Grouping the completed flow into six functional increments made dependencies visible without misrepresenting the method as time-boxed Scrum.
+
+The project's principal engineering contribution is the coherent treatment of emergency coordination. Matching is not reduced to broadcasting a message: compatibility, eligibility, availability, distance, deadline, preference, and prior contact all affect candidate selection. Notification is treated as a distributed delivery problem involving events, persistence, retries, deduplication, WebSocket authorization, privacy, and auditability.
+
+The available repositories also reveal limitations. Backend test structures exist, but local execution was blocked by the Maven wrapper startup behavior. Frontend automated coverage is minimal. The archive does not contain application screenshots or CI execution exports. Rather than hiding these gaps, the report records them and proposes concrete corrections.
+
+Future work should prioritize reproducible builds, frontend and end-to-end tests, transactional event publication, secure releases, backup validation, security testing, and accessibility. Later partnerships could support usability studies, governed hospital integration, and validated forecasting while preserving privacy, clinical responsibility, and trust.

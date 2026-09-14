@@ -1,0 +1,48 @@
+!pragma layout smetana
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 0
+skinparam dpi 190
+skinparam defaultFontName "Arial"
+skinparam defaultFontSize 11
+skinparam defaultTextAlignment center
+skinparam linetype ortho
+skinparam nodesep 35
+skinparam ranksep 42
+
+skinparam ArrowColor #4B4B4B
+skinparam ArrowThickness 1.0
+skinparam BorderColor #4B4B4B
+
+skinparam ClassFontColor #2F2F2F
+skinparam ClassBorderColor #4B4B4B
+skinparam ClassBackgroundColor #FFFFFF
+skinparam ClassHeaderBackgroundColor #F4F4F4
+skinparam ClassAttributeFontColor #2F2F2F
+skinparam ClassStereotypeFontColor #555555
+skinparam ClassAttributeIconSize 0
+
+skinparam PackageStyle rectangle
+skinparam PackageBorderColor #777777
+skinparam PackageBackgroundColor #FFFFFF
+skinparam PackageFontColor #2F2F2F
+skinparam PackageFontStyle bold
+
+skinparam ComponentBorderColor #4B4B4B
+skinparam ComponentBackgroundColor #FFFFFF
+skinparam ComponentFontColor #2F2F2F
+skinparam DatabaseBorderColor #4B4B4B
+skinparam DatabaseBackgroundColor #FFFFFF
+skinparam NodeBorderColor #4B4B4B
+skinparam NodeBackgroundColor #FFFFFF
+
+skinparam ActivityBorderColor #4B4B4B
+skinparam ActivityBackgroundColor #FFFFFF
+skinparam ActivityDiamondBorderColor #4B4B4B
+skinparam ActivityDiamondBackgroundColor #F4F4F4
+skinparam UsecaseBorderColor #4B4B4B
+skinparam UsecaseBackgroundColor #FFFFFF
+skinparam UsecaseFontColor #2F2F2F
+skinparam noteBackgroundColor #FAFAFA
+skinparam noteBorderColor #777777

@@ -1,0 +1,160 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+\usepackage[english]{babel}
+\usepackage[a4paper,top=2.45cm,bottom=2.45cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{graphicx,float,booktabs,longtable,array,tabularx,multirow,makecell}
+\usepackage{enumitem,caption,subcaption,fancyhdr}
+\usepackage[Glenn]{fncychap}
+\usepackage[table]{xcolor}
+\usepackage{hyperref,pdfpages,url,csquotes,etoolbox}
+\usepackage{listings}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric,positioning,arrows.meta,calc}
+
+\definecolor{qatrablue}{RGB}{38,73,103}
+\definecolor{qatralight}{RGB}{225,233,240}
+\definecolor{tableheader}{RGB}{214,225,234}
+\definecolor{tablesubheader}{RGB}{239,244,248}
+\hypersetup{colorlinks=true,linkcolor=black,citecolor=qatrablue,urlcolor=qatrablue}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt}
+\setlength{\emergencystretch}{3em}
+\raggedbottom
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{2}
+\setcounter{topnumber}{5}
+\setcounter{bottomnumber}{5}
+\setcounter{totalnumber}{8}
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.04}
+\renewcommand{\floatpagefraction}{0.86}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\captionsetup{font=small,labelfont=bf,justification=centering}
+\renewcommand{\arraystretch}{1.22}
+\setlength{\tabcolsep}{4.2pt}
+
+\pagestyle{fancy}
+\fancyhf{}
+\setlength{\headheight}{15.5pt}
+\fancyhead[R]{\small\nouppercase{\leftmark}}
+\fancyfoot[L]{\small Qatra Blood Donation Platform}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[L]{\small Qatra Blood Donation Platform}\fancyfoot[R]{\thepage}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0.4pt}}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\reporttitle}{Design and Implementation of Qatra: A Microservices-Based Platform for Blood Donation and Emergency Response Management}
+\newcommand{\studentname}{Mourad Slim Jnayeh}
+\newcommand{\companysupervisor}{Fahmi Mrabti}
+\newcommand{\academicsupervisor}{Amel Ben Ncira}
+
+\newcommand{\diagram}[3][0.39\textheight]{%
+  \begin{figure}[!htbp]
+    \centering
+    \includegraphics[width=0.98\textwidth,height=#1,keepaspectratio]{diagrams/rendered/#2.png}
+    \caption[#3]{#3\\\emph{Source: author, derived from the implemented Qatra system.}}
+    \label{fig:#2}
+  \end{figure}}
+
+\newcommand{\screenshotplaceholder}[2]{%
+  \begin{figure}[!htbp]
+    \centering
+    \fcolorbox{qatrablue}{white}{\begin{minipage}[c][5.4cm][c]{0.88\textwidth}
+      \centering{\color{qatrablue}\Large\textbf{UI Screenshot Placeholder}}\\[0.5em]
+      \textbf{#1}\\[0.6em]\small Replace with \texttt{assets/screenshots/#2}\\
+      Recommended: 1600x900 PNG, cropped to the application window.
+    \end{minipage}}
+    \caption{#1}
+    \label{fig:placeholder-#2}
+  \end{figure}}
+
+\newcommand{\uiscreenshot}[4][0.52\textheight]{%
+  \begin{figure}[H]
+    \centering
+    \fcolorbox{qatrablue!55}{white}{%
+      \includegraphics[width=0.93\textwidth,height=#1,keepaspectratio]{#2}}
+    \caption[#3]{#3\\\emph{Source: supplied Qatra application screenshot.}}
+    \label{fig:#4}
+  \end{figure}}
+
+\newcommand{\uiscreenshotpair}[7][0.27\textheight]{%
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{0.96\textwidth}
+      \centering
+      \fcolorbox{qatrablue!55}{white}{%
+        \includegraphics[width=0.93\textwidth,height=#1,keepaspectratio]{#2}}
+      \caption{#3}
+    \end{subfigure}\\[0.7em]
+    \begin{subfigure}{0.96\textwidth}
+      \centering
+      \fcolorbox{qatrablue!55}{white}{%
+        \includegraphics[width=0.93\textwidth,height=#1,keepaspectratio]{#4}}
+      \caption{#5}
+    \end{subfigure}
+    \caption[#6]{#6\\\emph{Source: supplied Qatra application screenshots.}}
+    \label{fig:#7}
+  \end{figure}}
+
+\lstset{basicstyle=\ttfamily\small,breaklines=true,frame=single,backgroundcolor=\color{tablesubheader},rulecolor=\color{qatrablue},showstringspaces=false}
+\makeatletter
+\patchcmd{\thebibliography}{\chapter*{\bibname}}{\chapter*{\bibname}\addcontentsline{toc}{chapter}{\bibname}}{}{}
+\makeatother
+
+\begin{document}
+\IfFileExists{Page-Garde.pdf}{%
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{Page-Garde.pdf}
+}{%
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{3.2cm}
+    {\color{qatrablue}\rule{0.82\textwidth}{1.2pt}}\\[1.2cm]
+    {\Huge\bfseries Cover Page Placeholder}\\[0.8cm]
+    {\Large\reporttitle}\\[1.3cm]
+    \begin{tabular}{rl}
+      Student: & \studentname\\
+      Host organization: & Keyrus MEA\\
+      Company supervisor: & \companysupervisor\\
+      Academic supervisor: & \academicsupervisor\\
+      Academic year: & 2025--2026
+    \end{tabular}\\[1.4cm]
+    \emph{Replace this page by adding \texttt{Page-Garde.pdf} beside \texttt{main.tex}.}\\[1.2cm]
+    {\color{qatrablue}\rule{0.82\textwidth}{1.2pt}}
+  \end{center}
+  \clearpage
+}
+
+\IfFileExists{SIGNATURE_PAGE.pdf}{%
+  \includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{SIGNATURE_PAGE.pdf}
+}{}
+
+\pagenumbering{roman}
+\input{frontmatter/acknowledgements}
+\input{frontmatter/abstract}
+\tableofcontents
+\listoffigures
+\listoftables
+\input{frontmatter/acronyms}
+
+\clearpage\pagenumbering{arabic}
+\input{chapters/general_introduction}
+\input{chapters/chapter1_context}
+\input{chapters/chapter2_state_of_art}
+\input{chapters/chapter3_requirements}
+\input{chapters/chapter4_architecture}
+\input{chapters/chapter5_implementation}
+\input{chapters/chapter6_matching}
+\input{chapters/chapter7_industrialization}
+\input{chapters/general_conclusion}
+\input{references}
+\clearpage
+\includepdf[pages=-,pagecommand={\thispagestyle{empty}}]{last page.pdf}
+\end{document}
