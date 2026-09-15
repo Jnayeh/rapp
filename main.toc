@@ -53,7 +53,7 @@
 \contentsline {section}{\numberline {4.6}API and DTO Boundaries}{28}{section.4.6}%
 \contentsline {section}{\numberline {4.7}Authentication and Authorization}{29}{section.4.7}%
 \contentsline {section}{\numberline {4.8}Appointment Consistency}{29}{section.4.8}%
-\contentsline {section}{\numberline {4.9}Physical Deployment Architecture}{31}{section.4.9}%
+\contentsline {section}{\numberline {4.9}Physical Deployment Architecture}{30}{section.4.9}%
 \contentsline {section}{\numberline {4.10}Cross-Cutting Concerns}{32}{section.4.10}%
 \contentsline {chapter}{\numberline {5}Functional Implementation Through Kanban Increments}{34}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Increment 1: Foundation, Identity, and Centers}{34}{section.5.1}%

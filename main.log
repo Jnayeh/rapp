@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.13)  15 SEP 2026 09:36
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.13)  15 SEP 2026 09:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1318,17 +1318,11 @@ File: diagrams/rendered/global-domain-model.png Graphic file (type bmp)
  [26]
 File: diagrams/rendered/hexagonal-architecture.png Graphic file (type bmp)
 <diagrams/rendered/hexagonal-architecture.png>
-
-Overfull \hbox (77.88606pt too wide) in paragraph at lines 70--71
- [][] 
- []
-
-[27] [28]
+ [27] [28]
 File: diagrams/rendered/authentication-sequence.png Graphic file (type bmp)
 <diagrams/rendered/authentication-sequence.png>
 File: diagrams/rendered/security-flow.png Graphic file (type bmp)
 <diagrams/rendered/security-flow.png>
- [29]
 File: diagrams/rendered/appointment-sequence.png Graphic file (type bmp)
 <diagrams/rendered/appointment-sequence.png>
 File: diagrams/rendered/appointment-activity.png Graphic file (type bmp)
@@ -1339,7 +1333,7 @@ Underfull \hbox (badness 1117) in paragraph at lines 102--103
 gers donation outcome and eligibility
  []
 
-[30]
+
 Underfull \hbox (badness 1275) in paragraph at lines 105--106
 \TU/TimesNewRoman(0)/m/n/12 The infrastructure declares one principal Kubernete
 s namespace, \TU/lmtt/m/n/12 qatra\TU/TimesNewRoman(0)/m/n/12 . Inside it, the
@@ -1351,7 +1345,7 @@ Underfull \hbox (badness 3989) in paragraph at lines 105--106
 onation API, notification API, and notification
  []
 
-[31]
+[29] [30] [31]
 File: assets/generated/physical-k3s-verified-portrait.png Graphic file (type bm
 p)
 <assets/generated/physical-k3s-verified-portrait.png>
