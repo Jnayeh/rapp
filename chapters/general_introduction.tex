@@ -1,15 +1,18 @@
 \chapter*{General Introduction}
 \addcontentsline{toc}{chapter}{General Introduction}
 
-Blood donation is a permanent public-health requirement. Hospitals need reliable access to compatible blood products for surgery, trauma care, obstetric emergencies, oncology, and chronic conditions. Yet the human and operational resources behind donation are distributed: donors make individual decisions, collection centers manage finite staff and appointment capacity, and emergency coordinators work under strict time constraints. When these actors depend on fragmented records, phone calls, or broad public appeals, valuable time is lost and the response is difficult to audit.
+Blood donation is a constant public-health need. Hospitals rely on compatible blood for surgery, trauma, obstetrics, oncology, and chronic care.
+But the people and systems behind it are spread out: donors decide alone, centers manage limited staff and slots, and emergency coordinators face tight deadlines.
+When they rely on scattered records, calls, or broad appeals, time is lost and response is hard to audit.
 
 Digital coordination can reduce this fragmentation, but the problem is more complex than publishing a list of centers. A useful platform must manage identity and consent, medical eligibility, geographical proximity, appointment capacity, staff workflows, notification preferences, emergency deadlines, and data protection. It must also remain responsive when many eligible donors are evaluated or notified. These needs naturally lead to questions of modularity, asynchronous communication, security, and operational visibility.
 
 Qatra was developed as an end-of-studies project at Keyrus MEA to address this challenge. It is a web platform that connects donors, center staff, center administrators, and super administrators. Its functional scope covers donor onboarding, blood-type and health information, location and availability, center discovery, appointment scheduling, screening and completion, donation history, emergency blood requests, tiered donor matching, notification delivery, audit records, and administrative analytics.
 
 The technical solution combines an Angular 20 frontend with two Java 21 and Spring Boot services. The donation service contains the principal identity, donor, center, appointment, emergency, and analytics capabilities. The notification service handles notification-oriented responsibilities and real-time communication. PostgreSQL provides relational persistence, Kafka supports event exchange, and Redis participates in the operational environment. Docker Compose supports local orchestration while k3s manifests describe a production-like deployment with Nginx, monitoring, logging, and tracing components.
-
+\newpage
 The work was organized with Kanban. This choice supported a continuous flow of analysis, implementation, verification, and documentation without forcing artificial sprint boundaries. Work items were grouped into coherent delivery increments so that domain foundations preceded workflows that depended on them.
 
-This report is organized into seven chapters. The first presents Keyrus MEA, the internship mission, and the project problem. The second positions the technological choices. The third formalizes actors, requirements, and Kanban planning. The fourth describes architecture and detailed design. The fifth follows the functional implementation through delivery increments. The sixth focuses on emergency matching and notification intelligence. The seventh examines industrialization, testing, observability, limitations, and operational readiness. A general conclusion summarizes the achieved result and identifies realistic extensions.
+This report is organized into seven chapters. The first presents Keyrus MEA, the internship mission, and the project problem. The second positions the technological choices. The third formalizes actors, requirements, and Kanban planning. The fourth describes architecture and detailed design. The fifth follows the functional implementation through delivery increments. The sixth focuses on emergency matching and notification intelligence. The seventh examines industrialization, testing, observability, limitations, and operational readiness.
+A general conclusion summarizes the achieved result and identifies realistic extensions.
 

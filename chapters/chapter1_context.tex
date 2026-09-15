@@ -11,7 +11,7 @@ The group works through regional entities that combine local delivery with acces
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.62\textwidth,height=0.19\textheight,keepaspectratio]{assets/company/keyrus-ai-artwork.png}
-\caption[Keyrus AI identity]{Keyrus AI identity and ``Architect of intelligence'' signature\\\emph{Source: artwork supplied for this report.}}
+\caption[Keyrus AI identity]{Keyrus AI identity and ``Architect of intelligence'' signature}
 \end{figure}
 
 \section{Keyrus MEA}
@@ -92,8 +92,6 @@ To position Qatra against real services, this study examines five publicly docum
 \endhead
 CNTS Tunisia appointment platform & Online appointment booking for the national center in Tunis and the regional center in Sfax, intended to reduce waiting time, with extension to other regional centers announced~\cite{cntsplatform}. & Provides the most relevant local institutional reference. Qatra extends the study beyond appointment booking to donor profiles, center operations, emergency matching, notifications, analytics, and platform governance.\\ \hline
 American Red Cross Blood Donor App & Finds nearby drives and centers, schedules and manages appointments, supports RapidPass, displays donation history and health information, and tracks a donation's journey~\cite{redcrossapp}. & Demonstrates a mature donor-centered experience. Qatra studies a broader multi-role workflow that also includes center staff, administrators, emergency coordination, and auditable operational actions.\\ \hline
-NHS Give Blood & Shows nearby venues and real-time availability, manages appointments, presents donation history, blood group, milestones, and eligibility guidance~\cite{nhsgiveblood}. & Strong reference for appointment discovery and donor self-service. Qatra additionally focuses on urgent requests, compatibility-based candidate selection, response tracking, and center administration.\\ \hline
-EFS Don de sang & Supports appointment booking, a donation suitability questionnaire, geolocation of nearby collection sites, personal information, and communication preferences~\cite{efsapp}. & Useful reference for accessibility and donor preparation. Qatra combines comparable donor services with staff workflows, emergency processing, notification delivery, and cross-center governance.\\ \hline
 Facebook Blood Donations & Allows users to register for nearby blood-donation notifications and discover requests, blood banks, and donation events; Meta reported availability in Tunisia in 2021~\cite{facebookblood}. & Optimized for broad community reach and awareness. Qatra's design instead emphasizes verified platform roles, eligibility and compatibility checks, controlled emergency states, targeted delivery, and auditability.\\ \hline
 \caption{Comparison of representative blood-donation platforms}
 \label{tab:existing-platforms}
@@ -101,6 +99,7 @@ Facebook Blood Donations & Allows users to register for nearby blood-donation no
 
 The comparison reveals two complementary tendencies. Institutional applications provide reliable appointment and donor-account services, while social platforms provide large-scale awareness and rapid dissemination. Qatra brings these concerns into one controlled domain model: appointments remain linked to center capacity, emergency alerts are filtered before dispatch, staff actions follow explicit states, and administrative operations are recorded. This positioning is a design objective of the project; it is not a claim of superior clinical or production performance.
 
+\newpage
 \section{Proposed Solution: Qatra}
 Qatra is a role-aware web platform centered on the donation lifecycle. A donor creates and verifies an account, completes profile and health information, sets location and availability, discovers centers, reserves a slot, completes screening, and receives a recorded donation outcome. Center staff manage daily operational tasks and authorized emergency workflows. Center administrators manage center information, slots, staff, activity, reports, and urgent requests within their scope. Super administrators govern users, center approvals, roles, audit records, and sensitive requests. The system filters and ranks eligible donors and dispatches notifications.
 
@@ -120,6 +119,12 @@ Super administrator & Platform governance & Users, roles, center approvals, rest
 \label{tab:system-context}
 \end{table}
 
+\section{Objectives and Constraints}
+The principal objectives are to centralize donor and center workflows, reduce irrelevant emergency notifications, improve appointment coordination, preserve an audit trail, and provide an architecture that can evolve. The principal constraints are the sensitivity of health-related data, the need for role separation, asynchronous failure handling, geographical calculations, consistency across service boundaries, and the absence of direct integration with operational hospital systems in the project scope.
+
+Success is therefore evaluated through coverage and coherence of implemented workflows, source-backed architecture, automated test presence, and operational configuration. It is not evaluated through unverified clinical impact or production usage figures.
+
+\newpage
 \section{Project Stakeholders}
 \begin{longtable}{|P{3.0cm}|P{4.1cm}|P{6.3cm}|}
 \hline
@@ -137,11 +142,6 @@ DevOps operator & Deploy and observe the platform & Repeatable releases, health 
 \caption{Qatra stakeholders and expectations}
 \label{tab:stakeholders}
 \end{longtable}
-
-\section{Objectives and Constraints}
-The principal objectives are to centralize donor and center workflows, reduce irrelevant emergency notifications, improve appointment coordination, preserve an audit trail, and provide an architecture that can evolve. The principal constraints are the sensitivity of health-related data, the need for role separation, asynchronous failure handling, geographical calculations, consistency across service boundaries, and the absence of direct integration with operational hospital systems in the project scope.
-
-Success is therefore evaluated through coverage and coherence of implemented workflows, source-backed architecture, automated test presence, and operational configuration. It is not evaluated through unverified clinical impact or production usage figures.
 
 \section*{Conclusion}
 This chapter defined the professional context, the coordination problem, the stakeholders, and the boundaries of Qatra. The next chapter compares the architectural and technological alternatives that support these requirements.

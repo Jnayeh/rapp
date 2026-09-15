@@ -17,6 +17,33 @@ Figure~\ref{fig:logical-architecture} presents the responsibilities and the emph
 
 The architecture avoids direct frontend access to databases or brokers. API boundaries centralize validation, authentication, DTO mapping, and error handling. The notification service is not a second source of truth for donation records; it reacts to identifiers and payloads required for delivery.
 
+\newpage
+\section{Global Use Case Diagram}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.99\textwidth,height=0.90\textheight]{diagrams/rendered/usecasediagram.png}
+  \caption{Global Qatra use-case diagram}
+\end{figure}
+\newpage
+
+\section{Global Class Diagram}
+The global class model in Figure~\ref{fig:global-domain-model} consolidates the most important concepts from the implemented packages. It is intentionally a domain overview rather than a dump of every JPA field.
+
+\diagram[0.58\textheight]{global-domain-model}{Global Qatra class diagram}
+
+Important invariants include the following:
+
+\begin{itemize}
+  \item a slot belongs to one center and has finite capacity or state;
+  \item an appointment associates a donor, a center, and a scheduled slot;
+  \item screening precedes a completed donation outcome;
+  \item eligibility depends on health restrictions and the most recent relevant donation state;
+  \item an emergency declares a required blood type, location, deadline, and lifecycle status;
+  \item candidate responses and delivery records must be attributable to the relevant emergency;
+  \item audit records capture actor, action, target, and time for state-changing operations.
+\end{itemize}
+
 \section{Bounded Contexts and Modules}
 The donation service contains domain-focused packages rather than a single generic service layer. The principal contexts identified from the repository are shown in Table~\ref{tab:contexts}.
 
@@ -38,23 +65,11 @@ Notification & Delivery preferences, messages, real-time updates & Notification,
 \end{longtable}
 
 Each context follows a recognizable direction of dependency: web adapters call inbound use cases; application services coordinate domain behavior; repository ports abstract persistence; JPA adapters map domain objects to entities. Proxies provide controlled access when one context needs information owned by another.
-
-\section{Global Domain Model}
-The global class model in Figure~\ref{fig:global-domain-model} consolidates the most important concepts from the implemented packages. It is intentionally a domain overview rather than a dump of every JPA field.
-
-\diagram[0.58\textheight]{global-domain-model}{Global Qatra domain class diagram}
-
-Important invariants include the following:
-
-\begin{itemize}
-  \item a slot belongs to one center and has finite capacity or state;
-  \item an appointment associates a donor, a center, and a scheduled slot;
-  \item screening precedes a completed donation outcome;
-  \item eligibility depends on health restrictions and the most recent relevant donation state;
-  \item an emergency declares a required blood type, location, deadline, and lifecycle status;
-  \item candidate responses and delivery records must be attributable to the relevant emergency;
-  \item audit records capture actor, action, target, and time for state-changing operations.
-\end{itemize}
+\begin{figure}[H]
+  \centering
+  \includegraphics[height=0.33\textheight,keepaspectratio]{diagrams/rendered/hexagonal-architecture.png}
+  \caption{Appointment module architecture}
+\end{figure}
 
 \section{Persistence Design}
 PostgreSQL stores the relational domain. JPA entities and repositories provide persistence adapters, while mapper classes translate to and from domain models. This separation allows the domain vocabulary to remain stable if storage details change.
@@ -87,13 +102,13 @@ The same workflow is represented as an activity diagram in Figure~\ref{fig:appoi
 Rescheduling should behave as one business transition: validate the new slot, update or replace the reservation, and leave the previous slot in a consistent state. Check-in and completion are restricted to authorized staff. Completion triggers donation outcome and eligibility consequences rather than only changing a label in the UI.
 
 \section{Physical Deployment Architecture}
-The infrastructure repository declares one principal Kubernetes namespace, \texttt{qatra}. Inside it, the deployable business workloads are the donation service and notification service; PostgreSQL, Kafka, Redis, observability components, and administrative tools support them. Traefik \texttt{IngressRoute} resources expose the donation API, notification API, and notification WebSocket endpoint. The supplied manifests do not deploy the Angular frontend inside k3s, and they do not define Nginx as the Kubernetes ingress. Persistent storage is used where state must survive pod replacement.
+The infrastructure declares one principal Kubernetes namespace, \texttt{qatra}. Inside it, the deployable business workloads are the donation service and notification service; PostgreSQL, Kafka, Redis, observability components, and administrative tools support them. Traefik \texttt{IngressRoute} resources expose the donation API, notification API, and notification WebSocket endpoint. Persistent storage is used where state must survive pod replacement.
 
 \clearpage
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.82\textwidth,height=0.68\textheight,keepaspectratio]{assets/generated/physical-k3s-verified-portrait.png}
-\caption{Verified physical k3s deployment in the single \texttt{qatra} namespace}
+\caption{Physical k3s deployment in \texttt{qatra} namespace}
 \label{fig:physical-deployment}
 \end{figure}
 

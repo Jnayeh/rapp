@@ -27,7 +27,7 @@ Domain modularity & Depends on discipline & Enforced by boundaries & Hexagonal m
 \label{tab:architecture-comparison}
 \end{table}
 
-\subsection{Hexagonal Organization}
+\subsection{Hexagonal Architecture}
 The donation service organizes many features around domain models, inbound ports, outbound ports, application services, and infrastructure adapters. This reflects hexagonal architecture: business rules depend on abstractions, while persistence and web concerns implement external adapters~\cite{hexagonal}. The benefit is visible in modules such as appointment, center, donor, emergency, and analytics, where domain vocabulary is not reduced to controller or database terminology.
 
 \section{Event-Driven Communication}
@@ -78,26 +78,6 @@ Figure~\ref{fig:technology-stack} groups the selected technologies by engineerin
 \caption{Qatra technology stack and engineering concerns}
 \label{fig:technology-stack}
 \end{figure}
-
-\section{Development and Modeling Environment}
-Table~\ref{tab:development-environment} lists tools verified from the supplied repositories and report workspace. It distinguishes artifacts that are present from tools that would merely be plausible for such a project.
-
-\begin{table}[H]
-\centering\small
-\begin{tabularx}{\textwidth}{|P{3.2cm}|P{3.7cm}|Y|}
-\hline
-\rowcolor{tableheader}\textbf{Tool} & \textbf{Verified artifact} & \textbf{Role in the project}\\ \hline
-Git and GitHub & Repository organization and GitHub Actions workflow files & Source-control workflow, pull-request CI, image publication, and deployment automation\\ \hline
-StarUML & Supplied editable \texttt{.mdj} model & Requirements and global use-case modeling\\ \hline
-Java 21 and Maven Wrapper & Service \texttt{pom.xml} files and wrapper scripts & Backend compilation, dependency management, and automated tests\\ \hline
-Node.js and Angular CLI & \texttt{package.json}, lock file, and Angular workspace & Frontend development and production build orchestration\\ \hline
-Docker and Docker Compose & Service Dockerfiles and root Compose file & Reproducible images and local multi-container integration\\ \hline
-k3s and Traefik & Kubernetes manifests and \texttt{IngressRoute} resources & Server-side orchestration, routing, TLS entry, and operational services\\ \hline
-PlantUML and \LaTeX & Editable diagram sources and report source & Reproducible UML figures and final academic documentation\\ \hline
-\end{tabularx}
-\caption{Verified development and modeling environment}
-\label{tab:development-environment}
-\end{table}
 
 \section{Technology Decision Summary}
 \begin{longtable}{|P{3.0cm}|P{3.5cm}|P{4.0cm}|P{3.2cm}|}

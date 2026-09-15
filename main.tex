@@ -1,5 +1,6 @@
 \documentclass[12pt,a4paper,oneside]{report}
 
+\usepackage[none]{hyphenat}
 \usepackage{fontspec}
 \setmainfont{Times New Roman}
 \usepackage[english]{babel}
@@ -60,7 +61,7 @@
   \begin{figure}[!htbp]
     \centering
     \includegraphics[width=0.98\textwidth,height=#1,keepaspectratio]{diagrams/rendered/#2.png}
-    \caption[#3]{#3\\\emph{Source: author, derived from the implemented Qatra system.}}
+    \caption[#3]{#3}
     \label{fig:#2}
   \end{figure}}
 
@@ -81,7 +82,7 @@
     \centering
     \fcolorbox{qatrablue!55}{white}{%
       \includegraphics[width=0.93\textwidth,height=#1,keepaspectratio]{#2}}
-    \caption[#3]{#3\\\emph{Source: supplied Qatra application screenshot.}}
+    \caption[#3]{#3}
     \label{fig:#4}
   \end{figure}}
 
@@ -100,7 +101,7 @@
         \includegraphics[width=0.93\textwidth,height=#1,keepaspectratio]{#4}}
       \caption{#5}
     \end{subfigure}
-    \caption[#6]{#6\\\emph{Source: supplied Qatra application screenshots.}}
+    \caption[#6]{#6}
     \label{fig:#7}
   \end{figure}}
 

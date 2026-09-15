@@ -4,7 +4,7 @@
 This chapter formalizes who uses Qatra, what the system must do, which qualities constrain the solution, and how work was organized as a continuous Kanban flow. The StarUML model supplied with the project is used as the principal use-case source and is cross-checked against controllers, services, frontend routes, and infrastructure files.
 
 \section{System Actors}
-The model identifies four human actors: donor, center staff, center administrator, and super administrator. Emergency creation is available within authorized operational workflows. The system itself performs scheduled and event-driven work such as session expiry, eligibility restoration, donor scanning, ranking, escalation, notification retry, deadline expiry, forecasting, and audit logging.
+The model identifies four human actors: donor, center staff, center administrator, and super administrator.
 
 \begin{table}[H]
 \centering\small
@@ -54,8 +54,6 @@ Consistency & Preserve appointment and slot constraints under concurrent request
 Maintainability & Keep domain rules separate from web and persistence details & Ports, adapters, domain models, DTOs, feature modules\\ \hline
 Observability & Expose metrics, logs, and traces for distributed diagnosis & Actuator, Prometheus, Grafana, Loki, Promtail, Jaeger\\ \hline
 Deployability & Package and update services reproducibly & Dockerfiles, Compose, k3s manifests, GitHub Actions\\ \hline
-Usability & Provide role-focused workflows and clear status feedback & Angular layouts, feature pages, shared status and empty-state components\\ \hline
-Testability & Support automated checks at service and component boundaries & Maven tests and Angular test configuration\\ \hline
 \caption{Principal non-functional requirements}
 \label{tab:nfr}
 \end{longtable}
@@ -69,18 +67,18 @@ The backlog was organized by user value and dependency. Identity and foundationa
 \endfirsthead
 \hline\rowcolor{tableheader}\textbf{ID} & \textbf{Epic} & \textbf{Representative outcome} & \textbf{Priority}\\ \hline
 \endhead
-E1 & Identity and security & Verified account, login, reset, roles, protected routes & Must\\ \hline
-E2 & Donor onboarding & Health, blood type, location, availability, preferences & Must\\ \hline
-E3 & Center management & Center approval, staff, operating hours, slots & Must\\ \hline
-E4 & Appointment lifecycle & Booking, rescheduling, check-in, screening, completion & Must\\ \hline
-E5 & Donor engagement & History, eligibility, certificates, impact, reliability & Should\\ \hline
-E6 & Emergency management & Creation, deadline, progress, resolution, history & Must\\ \hline
-E7 & Matching engine & Compatibility, availability, distance, ranking, escalation & Must\\ \hline
-E8 & Notification engine & Alerts, retries, preferences, WebSocket updates & Must\\ \hline
-E9 & Administration & Users, roles, restrictions, GDPR, audit & Must\\ \hline
-E10 & Analytics and reporting & Center and system summaries, exports & Should\\ \hline
-E11 & Industrialization & CI/CD, containers, k3s deployment & Should\\ \hline
-E12 & Observability & Metrics, dashboards, logs, traces & Should\\ \hline
+E1 & Identity and security & Verified account, login, reset, roles, protected routes & High\\ \hline
+E2 & Donor onboarding & Health, blood type, location, availability, preferences & High\\ \hline
+E3 & Center management & Center approval, staff, operating hours, slots & High\\ \hline
+E4 & Appointment lifecycle & Booking, rescheduling, check-in, screening, completion & High\\ \hline
+E5 & Donor engagement & History, eligibility, certificates, impact, reliability & Medium\\ \hline
+E6 & Emergency management & Creation, deadline, progress, resolution, history & High\\ \hline
+E7 & Matching engine & Compatibility, availability, distance, ranking, escalation & Medium\\ \hline
+E8 & Notification engine & Alerts, retries, preferences, WebSocket updates & Low\\ \hline
+E9 & Administration & Users, roles, restrictions, GDPR, audit & Medium\\ \hline
+E10 & Analytics and reporting & Center and system summaries, exports & Low\\ \hline
+E11 & Industrialization & CI/CD, containers, k3s deployment & Low\\ \hline
+E12 & Observability & Metrics, dashboards, logs, traces & Low\\ \hline
 \caption{Qatra product backlog by epic}
 \label{tab:backlog}
 \end{longtable}
@@ -109,8 +107,8 @@ Figure~\ref{fig:kanban-reference} illustrates the visual pull principle adopted 
 
 \begin{figure}[H]
 \centering
-\includegraphics[height=0.54\textheight]{assets/methodology/Kanban-process.png}
-\caption[Kanban process]{Kanban process visual reused from the preferred reference report}
+\includegraphics[height=0.34\textheight]{assets/methodology/Kanban-process.png}
+\caption[Kanban process]{Kanban process}
 \label{fig:kanban-reference}
 \end{figure}
 
@@ -126,7 +124,7 @@ Kanban does not prevent grouping completed work into reportable increments. Six 
   \item analytics, administration, deployment, and observability.
 \end{enumerate}
 
-\diagram[0.30\textheight]{increment-roadmap}{Functional dependency roadmap for Kanban increments}
+\diagram[0.25\textheight]{increment-roadmap}{Functional dependency roadmap for Kanban increments}
 
 \section{Definition of Done and Traceability}
 A work item is considered done when its acceptance behavior is implemented, authorization and validation have been considered, affected interfaces are documented, and available automated checks pass in the intended CI environment. Where verification cannot be reproduced locally, the limitation is recorded instead of replacing evidence with an assumption.
