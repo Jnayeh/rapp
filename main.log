@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.13)  15 SEP 2026 09:23
+This is XeTeX, Version 3.141592653-2.6-0.999998 (MiKTeX 26.5) (preloaded format=xelatex 2026.9.13)  15 SEP 2026 09:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1213,4 +1213,443 @@ anization’s donor-selection and
 
 
 Underfull \hbox (badness 1102) in paragraph at lines 60--61
-[]\TU/TimesNewRoman(0)/m/n/12 The central question is therefore: \TU/TimesNewR
+[]\TU/TimesNewRoman(0)/m/n/12 The central question is therefore: \TU/TimesNewRo
+man(0)/m/it/12 how can a secure and maintainable digital platform
+ []
+
+
+Underfull \hbox (badness 1622) in paragraph at lines 60--61
+\TU/TimesNewRoman(0)/m/it/12 coordinate donors, centers, appointments, emergenc
+ies, and notifications while keeping
+ []
+
+[5]
+Underfull \hbox (badness 6675) in paragraph at lines 64--65
+\TU/TimesNewRoman(0)/m/n/12 Existing approaches can be grouped into manual coor
+dination, institutional portals,
+ []
+
+
+Underfull \hbox (badness 1231) in paragraph at lines 64--65
+\TU/TimesNewRoman(0)/m/n/12 campaign-oriented applications, and integrated digi
+tal platforms. Table [][]1.1[][] summarizes
+ []
+
+[6] [7]
+Underfull \hbox (badness 1210) in paragraph at lines 123--124
+\TU/TimesNewRoman(0)/m/n/12 emergency notifications, improve appointment coordi
+nation, preserve an audit trail, and
+ []
+
+[8]) (chapters/chapter2_state_of_art.tex [9]
+Chapter 2.
+
+Underfull \hbox (badness 2050) in paragraph at lines 4--5
+\TU/TimesNewRoman(0)/m/n/12 choice had to support domain modularity, secure web
+ interaction, reliable persistence,
+ []
+
+[10
+
+] [11]
+Underfull \hbox (badness 1789) in paragraph at lines 50--51
+\TU/TimesNewRoman(0)/m/n/12 Relational persistence is appropriate for users, ce
+nters, appointments, slots, emergency
+ []
+
+[12]
+Underfull \hbox (badness 1033) in paragraph at lines 61--62
+[]\TU/TimesNewRoman(0)/m/n/12 GDPR-oriented capabilities in the use-case model 
+include account deletion requests and
+ []
+
+[13]
+File: assets/generated/technology-stack-portrait.png Graphic file (type bmp)
+<assets/generated/technology-stack-portrait.png>
+ [14]) (chapters/chapter3_requirements.tex [15]
+Chapter 3.
+File: diagrams/rendered/global-use-case.png Graphic file (type bmp)
+<diagrams/rendered/global-use-case.png>
+[16
+
+]
+Underfull \hbox (badness 1648) in paragraph at lines 32--33
+\TU/TimesNewRoman(0)/m/n/12 eligibility status, next eligible date, reliability
+ score, impact information, and donation
+ []
+
+[17] [18]
+Underfull \hbox (badness 1394) in paragraph at lines 63--64
+\TU/TimesNewRoman(0)/m/n/12 event exchange precedes real-time notification; ope
+rational visibility follows deployable
+ []
+
+[19]
+File: assets/methodology/Kanban-process.png Graphic file (type bmp)
+<assets/methodology/Kanban-process.png>
+ [20]
+File: diagrams/rendered/increment-roadmap.png Graphic file (type bmp)
+<diagrams/rendered/increment-roadmap.png>
+ [21]) (chapters/chapter4_architecture.tex [22]
+Chapter 4.
+
+Underfull \hbox (badness 1152) in paragraph at lines 7--8
+\TU/TimesNewRoman(0)/m/n/12 exactly two deployable Spring Boot services: the do
+nation service and the notification
+ []
+
+
+Underfull \hbox (badness 1199) in paragraph at lines 9--10
+[]\TU/TimesNewRoman(0)/m/n/12 Figure [][]4.1[][] presents the responsibilities 
+and the emphasized emergency path in a single
+ []
+
+File: assets/generated/logical-architecture-verified-portrait.png Graphic file 
+(type bmp)
+<assets/generated/logical-architecture-verified-portrait.png>
+[23
+
+] [24]
+File: diagrams/rendered/usecasediagram.png Graphic file (type bmp)
+<diagrams/rendered/usecasediagram.png>
+ [25]
+File: diagrams/rendered/global-domain-model.png Graphic file (type bmp)
+<diagrams/rendered/global-domain-model.png>
+ [26]
+File: diagrams/rendered/hexagonal-architecture.png Graphic file (type bmp)
+<diagrams/rendered/hexagonal-architecture.png>
+
+Overfull \hbox (77.88606pt too wide) in paragraph at lines 70--71
+ [][] 
+ []
+
+[27] [28]
+File: diagrams/rendered/authentication-sequence.png Graphic file (type bmp)
+<diagrams/rendered/authentication-sequence.png>
+File: diagrams/rendered/security-flow.png Graphic file (type bmp)
+<diagrams/rendered/security-flow.png>
+ [29]
+File: diagrams/rendered/appointment-sequence.png Graphic file (type bmp)
+<diagrams/rendered/appointment-sequence.png>
+File: diagrams/rendered/appointment-activity.png Graphic file (type bmp)
+<diagrams/rendered/appointment-activity.png>
+
+Underfull \hbox (badness 1117) in paragraph at lines 102--103
+\TU/TimesNewRoman(0)/m/n/12 are restricted to authorized staff. Completion trig
+gers donation outcome and eligibility
+ []
+
+[30]
+Underfull \hbox (badness 1275) in paragraph at lines 105--106
+\TU/TimesNewRoman(0)/m/n/12 The infrastructure declares one principal Kubernete
+s namespace, \TU/lmtt/m/n/12 qatra\TU/TimesNewRoman(0)/m/n/12 . Inside it, the
+ []
+
+
+Underfull \hbox (badness 3989) in paragraph at lines 105--106
+\TU/lmtt/m/n/12 IngressRoute \TU/TimesNewRoman(0)/m/n/12 resources expose the d
+onation API, notification API, and notification
+ []
+
+[31]
+File: assets/generated/physical-k3s-verified-portrait.png Graphic file (type bm
+p)
+<assets/generated/physical-k3s-verified-portrait.png>
+ [32
+
+]) (chapters/chapter5_implementation.tex [33]
+Chapter 5.
+
+Underfull \hbox (badness 2538) in paragraph at lines 10--11
+\TU/TimesNewRoman(0)/m/n/12 validation, and persistence. Center modules provide
+ command and query use cases,
+ []
+
+
+Underfull \hbox (badness 1215) in paragraph at lines 13--14
+\TU/TimesNewRoman(0)/m/n/12 Email verification separates account creation from 
+trusted access. Password reset uses
+ []
+
+File: assets/5.1/auth/auth-login.png Graphic file (type bmp)
+<assets/5.1/auth/auth-login.png>
+File: assets/5.1/auth/verification-success.png Graphic file (type bmp)
+<assets/5.1/auth/verification-success.png>
+File: assets/5.1/center/centers-map.png Graphic file (type bmp)
+<assets/5.1/center/centers-map.png>
+File: assets/5.1/center/centers-list.png Graphic file (type bmp)
+<assets/5.1/center/centers-list.png>
+[34
+
+]
+File: assets/5.1/center/create-center.png Graphic file (type bmp)
+<assets/5.1/center/create-center.png>
+File: assets/5.1/center/center-approval.png Graphic file (type bmp)
+<assets/5.1/center/center-approval.png>
+ [35] [36] [37]
+File: assets/5.2/donor/onboarding.png Graphic file (type bmp)
+<assets/5.2/donor/onboarding.png>
+File: assets/5.2/donor/blood-location.png Graphic file (type bmp)
+<assets/5.2/donor/blood-location.png>
+File: assets/5.2/donor/preferences.png Graphic file (type bmp)
+<assets/5.2/donor/preferences.png>
+ [38]
+File: assets/5.2/appointment/center-selection.png Graphic file (type bmp)
+<assets/5.2/appointment/center-selection.png>
+File: assets/5.2/appointment/time-slot-selection.png Graphic file (type bmp)
+<assets/5.2/appointment/time-slot-selection.png>
+ [39]
+File: assets/5.2/appointment/confirmation.png Graphic file (type bmp)
+<assets/5.2/appointment/confirmation.png>
+ [40] [41]
+Underfull \hbox (badness 1097) in paragraph at lines 49--50
+\TU/TimesNewRoman(0)/m/n/12 medical judgment. Completing an appointment can upd
+ate donation history and future
+ []
+
+File: assets/5.3/staff-queue/scheduled-queue.png Graphic file (type bmp)
+<assets/5.3/staff-queue/scheduled-queue.png>
+File: assets/5.3/staff-queue/appointment-check-in.png Graphic file (type bmp)
+<assets/5.3/staff-queue/appointment-check-in.png>
+File: assets/5.3/staff-queue/qr-check-in.png Graphic file (type bmp)
+<assets/5.3/staff-queue/qr-check-in.png>
+File: assets/5.3/staff-queue/checked-in-queue.png Graphic file (type bmp)
+<assets/5.3/staff-queue/checked-in-queue.png>
+[42]
+File: assets/5.3/staff-queue/screening.png Graphic file (type bmp)
+<assets/5.3/staff-queue/screening.png>
+ [43] [44]
+File: diagrams/rendered/emergency-sequence.png Graphic file (type bmp)
+<diagrams/rendered/emergency-sequence.png>
+ [45]
+File: assets/5.4/emergencies/emergency-list.png Graphic file (type bmp)
+<assets/5.4/emergencies/emergency-list.png>
+File: assets/5.4/emergencies/create-emergency.png Graphic file (type bmp)
+<assets/5.4/emergencies/create-emergency.png>
+File: assets/5.4/emergencies/emergency-details.png Graphic file (type bmp)
+<assets/5.4/emergencies/emergency-details.png>
+File: assets/5.4/donor-response/response-creation.png Graphic file (type bmp)
+<assets/5.4/donor-response/response-creation.png>
+ [46] [47]
+Underfull \hbox (badness 1168) in paragraph at lines 74--75
+\TU/TimesNewRoman(0)/m/n/12 The fifth increment transformed an emergency into t
+argeted communication. Matching
+ []
+
+
+Overfull \hbox (10.41336pt too wide) in paragraph at lines 74--75
+\TU/TimesNewRoman(0)/m/n/12 considers blood compatibility, availability, eligib
+ility, geographical distance, and reliability-related
+ []
+
+[48]
+File: assets/generated/kafka-notification-flow-portrait.png Graphic file (type 
+bmp)
+<assets/generated/kafka-notification-flow-portrait.png>
+File: assets/5.5/notifications/notifications-center.png Graphic file (type bmp)
+
+<assets/5.5/notifications/notifications-center.png>
+File: assets/5.4/donor-response/rejection.png Graphic file (type bmp)
+<assets/5.4/donor-response/rejection.png>
+File: assets/5.5/notifications/notification-popup.png Graphic file (type bmp)
+<assets/5.5/notifications/notification-popup.png>
+File: assets/5.5/notifications/emergency-details.png Graphic file (type bmp)
+<assets/5.5/notifications/emergency-details.png>
+ [49
+
+] [50]
+Underfull \hbox (badness 2020) in paragraph at lines 92--93
+[]\TU/TimesNewRoman(0)/m/n/12 Analytics must distinguish operational summaries 
+from clinical prediction. Counts of
+ []
+
+File: assets/5.5/super-admin/this-month-analytics.png Graphic file (type bmp)
+<assets/5.5/super-admin/this-month-analytics.png>
+File: assets/5.5/super-admin/all-time-analytics.png Graphic file (type bmp)
+<assets/5.5/super-admin/all-time-analytics.png>
+File: assets/5.5/super-admin/logs.png Graphic file (type bmp)
+<assets/5.5/super-admin/logs.png>
+[51]
+Underfull \hbox (badness 1490) in paragraph at lines 97--98
+[]\TU/TimesNewRoman(0)/m/n/12 The same increment includes deployable containers
+, k3s manifests, CI workflows, and
+ []
+
+[52]) (chapters/chapter6_matching.tex [53]
+Chapter 6.
+[54
+
+]
+Underfull \hbox (badness 6173) in paragraph at lines 36--37
+\TU/TimesNewRoman(0)/m/n/12 available, reliable, and willing to receive emergen
+cy requests through the selected
+ []
+
+[55]
+File: diagrams/rendered/emergency-matching-activity.png Graphic file (type bmp)
+
+<diagrams/rendered/emergency-matching-activity.png>
+ [56]
+Underfull \hbox (badness 3838) in paragraph at lines 63--64
+\TU/TimesNewRoman(0)/m/n/12 The notification service can support in-application
+ updates, WebSocket delivery, and
+ []
+
+[57] [58]) (chapters/chapter7_industrialization.tex [59]
+Chapter 7.
+[60
+
+]
+File: diagrams/rendered/cicd-pipeline.png Graphic file (type bmp)
+<diagrams/rendered/cicd-pipeline.png>
+ [61]
+Underfull \hbox (badness 4341) in paragraph at lines 35--36
+\TU/TimesNewRoman(0)/m/n/12 The infrastructure manifests place the two applicat
+ion services and their operational
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 35--36
+\TU/TimesNewRoman(0)/m/n/12 dependencies in the single \TU/lmtt/m/n/12 qatra \T
+U/TimesNewRoman(0)/m/n/12 namespace. Traefik \TU/lmtt/m/n/12 IngressRoute \TU/T
+imesNewRoman(0)/m/n/12 resources expose
+ []
+
+
+Underfull \hbox (badness 4060) in paragraph at lines 35--36
+\TU/TimesNewRoman(0)/m/n/12 Deployment order matters: namespace and stateful de
+pendencies precede application
+ []
+
+File: assets/generated/observability-portrait.png Graphic file (type bmp)
+<assets/generated/observability-portrait.png>
+[62]
+Underfull \hbox (badness 2359) in paragraph at lines 49--50
+[]\TU/TimesNewRoman(0)/m/n/12 Useful service-level indicators include request r
+ate, error rate, latency, JVM memory,
+ []
+
+
+Underfull \hbox (badness 1769) in paragraph at lines 49--50
+\TU/TimesNewRoman(0)/m/n/12 thread pools, database connection pools, Kafka cons
+umer lag, notification retry count,
+ []
+
+
+Underfull \hbox (badness 3612) in paragraph at lines 49--50
+\TU/TimesNewRoman(0)/m/n/12 WebSocket connections, and emergency matching durat
+ion. The repository contains
+ []
+
+[63] [64]
+Underfull \hbox (badness 1708) in paragraph at lines 87--88
+\TU/TimesNewRoman(0)/m/n/12 Pure domain tests should cover compatibility, eligi
+bility dates, appointment transitions,
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 90--91
+\TU/TimesNewRoman(0)/m/n/12 Repository adapters should be tested against Postgr
+eSQL-compatible behavior, including
+ []
+
+[65] [66]
+Underfull \hbox (badness 1248) in paragraph at lines 119--120
+\TU/TimesNewRoman(0)/m/n/12 The Maven wrappers use script-only distribution boo
+tstrap. In the inspected Windows
+ []
+
+[67]) (chapters/general_conclusion.tex
+Underfull \hbox (badness 2351) in paragraph at lines 134--1
+\TU/TimesNewRoman(0)/m/n/12 Qatra includes a credible industrialization foundat
+ion: CI and deployment workflows,
+ []
+
+[68]
+Underfull \hbox (badness 1337) in paragraph at lines 10--11
+[]\TU/TimesNewRoman(0)/m/n/12 The project’s principal engineering contribution 
+is the coherent treatment of emergency
+ []
+
+) (references.tex [69
+
+]
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+[]\TU/TimesNewRoman(0)/m/n/10 Apache Software Foundation, \TU/TimesNewRoman(0)/
+m/it/10 Apache Kafka Documentation\TU/TimesNewRoman(0)/m/n/10 , [][]$[][][][][]
+ [] [] [] [][][][][] [] [][][][][][] [] [][][] []
+ []
+
+
+Underfull \hbox (badness 8151) in paragraph at lines 21--22
+[][][][][][][][][][][][][][][][][] [] [][][][][][][] [] [][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
+[][][][]$[][]\TU/TimesNewRoman(0)/m/n/10 , accessed
+ []
+
+[70
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[]\TU/TimesNewRoman(0)/m/n/10 Meta, “Over 100 Million People Have Signed Up for
+ Local Blood
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+\TU/TimesNewRoman(0)/m/n/10 Donation Notifications,” [][]$[][][][][] [] [] [] [
+][][][][] [] [][] [] [][][] [] [][][][] [] [][][][] [] [][] []
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--24
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
+][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]$[][]\TU/TimesNewR
+oman(0)/m/n/10 , accessed August
+ []
+
+
+Underfull \hbox (badness 1859) in paragraph at lines 25--26
+[]\TU/TimesNewRoman(0)/m/n/10 World Health Organization, \TU/TimesNewRoman(0)/m
+/it/10 Screening Donated Blood for Transfusion-Transmissible Infections and
+ []
+
+) [71]
+File: last page.pdf Graphic file (type pdf)
+<use last page.pdf>
+File: last page.pdf Graphic file (type pdf)
+<use last page.pdf, page 1>
+File: last page.pdf Graphic file (type pdf)
+<use last page.pdf, page 1>
+File: last page.pdf Graphic file (type pdf)
+<use last page.pdf, page 1>
+File: last page.pdf Graphic file (type pdf)
+<use last page.pdf, page 1>
+File: last page.pdf Graphic file (type pdf)
+<use last page.pdf, page 1>
+ [72
+
+
+] (main.aux)
+ ***********
+LaTeX2e <2026-06-01>
+L3 programming layer <2026-08-10>
+ ***********
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 9A39E84620F61EAD66A76B436E7EF332;20777.
+ ) 
+Here is how much of TeX's memory you used:
+ 30205 strings out of 402560
+ 619067 string characters out of 5437717
+ 1106502 words of memory out of 5000000
+ 58807 multiletter control sequences out of 15000+600000
+ 632013 words of font info for 88 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 92i,17n,94p,1365b,603s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on main.pdf (85 pages).

@@ -22,6 +22,9 @@ System & Tokens, matching, notifications, eligibility, expiration, audit, foreca
 \end{table}
 
 \section{Functional Requirements}
+
+\diagram[0.57\textheight]{global-use-case}{Global Qatra use-case overview}
+
 \subsection{Identity and Profile}
 The system shall allow registration by email, email verification, login, logout, password reset, and controlled session management. A donor shall complete personal and health information, set blood type or mark it unknown, define notification preferences, and provide location manually or through GPS. Profile changes must be validated and subject to authorization.
 
@@ -36,8 +39,6 @@ Authorized users shall create, track, resolve, and review emergency requests. Th
 
 \subsection{Administration and Governance}
 Super administrators shall search users, change account status, approve or reject centers, assign or revoke roles, process deletion requests, review permanent health restrictions, consult dashboards, and export audit or platform reports. Every state-changing action should generate an attributable audit record.
-
-\diagram[0.57\textheight]{global-use-case}{Global Qatra use-case overview}
 
 \section{Non-Functional Requirements}
 \begin{longtable}{|P{3.0cm}|P{7.1cm}|P{3.4cm}|}

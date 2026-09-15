@@ -1,0 +1,44 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Keyrus AI identity}}{4}{figure.caption.10}%
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Keyrus organizational structure}}{4}{figure.caption.11}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Qatra technology stack and engineering concerns}}{14}{figure.caption.17}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Global Qatra use-case overview}}{17}{figure.caption.21}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Kanban process}}{21}{figure.caption.23}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Functional dependency roadmap for Kanban increments}}{22}{figure.caption.24}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Verified logical architecture and deployable service boundaries of Qatra}}{24}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Global Qatra use-case diagram}}{25}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Global Qatra class diagram}}{26}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Appointment module architecture}}{28}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Authentication and protected request sequence}}{29}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces JWT security and role-based authorization flow}}{30}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Appointment booking, check-in, screening, and completion sequence}}{30}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Appointment booking and donation activity diagram}}{31}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Physical k3s deployment in \texttt {qatra} namespace}}{32}{figure.caption.36}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Login and account verification interfaces}}{35}{figure.caption.39}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Donation-center discovery interfaces}}{36}{figure.caption.40}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Center registration and approval interfaces}}{37}{figure.caption.41}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Donor onboarding workflow}}{39}{figure.caption.42}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Notification-preference configuration}}{40}{figure.caption.43}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Appointment center and slot selection}}{41}{figure.caption.44}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Appointment booking confirmation}}{42}{figure.caption.45}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Center staff schedule and check-in interfaces}}{43}{figure.caption.46}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces QR check-in and staff processing queue}}{44}{figure.caption.47}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Health screening form}}{45}{figure.caption.48}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Emergency creation, candidate matching, and response sequence}}{46}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Emergency management and request creation}}{47}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces Emergency progress and donor-response workflow}}{48}{figure.caption.51}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Kafka event and notification delivery flow}}{49}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces Donor emergency alert and response interfaces}}{50}{figure.caption.53}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces Notification access and emergency-status interfaces}}{51}{figure.caption.54}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces Super-administration analytics dashboards}}{52}{figure.caption.55}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Super-administration audit log interface}}{52}{figure.caption.56}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Emergency matching and notification activity diagram}}{56}{figure.caption.61}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Qatra CI/CD pipeline from change to k3s rollout}}{61}{figure.caption.64}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Metrics, logs, and traces in the Qatra environment}}{63}{figure.caption.65}%

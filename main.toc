@@ -1,0 +1,113 @@
+\babel@toc {english}{}\relax 
+\contentsline {chapter}{Acknowledgements}{i}{chapter*.1}%
+\contentsline {chapter}{Abstract}{ii}{chapter*.2}%
+\contentsline {chapter}{Résumé}{iii}{chapter*.3}%
+\contentsline {chapter}{List of Acronyms}{xi}{chapter*.7}%
+\contentsline {chapter}{General Introduction}{1}{chapter*.8}%
+\contentsline {chapter}{\numberline {1}Project Context and Host Organization}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Keyrus Group}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Keyrus MEA}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Internship Mission}{5}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Problem Statement}{5}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Study of Existing Solutions}{6}{section.1.5}%
+\contentsline {subsection}{\numberline {1.5.1}General Coordination Approaches}{6}{subsection.1.5.1}%
+\contentsline {subsection}{\numberline {1.5.2}Representative Digital Platforms}{6}{subsection.1.5.2}%
+\contentsline {section}{\numberline {1.6}Proposed Solution: Qatra}{8}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Objectives and Constraints}{8}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Project Stakeholders}{9}{section.1.8}%
+\contentsline {chapter}{\numberline {2}State of the Art and Technological Choices}{10}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Digital Blood-Donation Platforms}{10}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Architectural Style}{10}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Monolith and Microservices}{10}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Hexagonal Architecture}{11}{subsection.2.2.2}%
+\contentsline {section}{\numberline {2.3}Event-Driven Communication}{11}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Backend Framework: Java and Spring Boot}{12}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Frontend Framework: Angular}{12}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Persistence and Messaging Data}{12}{section.2.6}%
+\contentsline {subsection}{\numberline {2.6.1}PostgreSQL}{12}{subsection.2.6.1}%
+\contentsline {subsection}{\numberline {2.6.2}Redis}{12}{subsection.2.6.2}%
+\contentsline {subsection}{\numberline {2.6.3}Kafka}{13}{subsection.2.6.3}%
+\contentsline {section}{\numberline {2.7}Security and Privacy}{13}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Containers and Kubernetes}{13}{section.2.8}%
+\contentsline {section}{\numberline {2.9}CI/CD and Observability}{13}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Technology Decision Summary}{15}{section.2.10}%
+\contentsline {chapter}{\numberline {3}Requirements Analysis and Kanban Planning}{16}{chapter.3}%
+\contentsline {section}{\numberline {3.1}System Actors}{16}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Functional Requirements}{17}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Identity and Profile}{17}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Donor Lifecycle}{17}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Centers and Appointments}{17}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Emergencies and Notifications}{17}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Administration and Governance}{18}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Non-Functional Requirements}{18}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Product Backlog}{19}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Kanban Method}{20}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Delivery Increments}{21}{section.3.6}%
+\contentsline {section}{\numberline {3.7}Definition of Done and Traceability}{21}{section.3.7}%
+\contentsline {chapter}{\numberline {4}System Architecture and Detailed Design}{23}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Global Architecture}{23}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Global Use Case Diagram}{25}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Global Class Diagram}{26}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Bounded Contexts and Modules}{27}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Persistence Design}{28}{section.4.5}%
+\contentsline {section}{\numberline {4.6}API and DTO Boundaries}{28}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Authentication and Authorization}{29}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Appointment Consistency}{29}{section.4.8}%
+\contentsline {section}{\numberline {4.9}Physical Deployment Architecture}{31}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Cross-Cutting Concerns}{32}{section.4.10}%
+\contentsline {chapter}{\numberline {5}Functional Implementation Through Kanban Increments}{34}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Increment 1: Foundation, Identity, and Centers}{34}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Objective and Scope}{34}{subsection.5.1.1}%
+\contentsline {subsection}{\numberline {5.1.2}Design Decisions}{34}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Acceptance Scenarios}{37}{subsection.5.1.3}%
+\contentsline {section}{\numberline {5.2}Increment 2: Donor Profiles and Appointments}{38}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Objective and Scope}{38}{subsection.5.2.1}%
+\contentsline {subsection}{\numberline {5.2.2}Workflow}{38}{subsection.5.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Privacy Considerations}{42}{subsection.5.2.3}%
+\contentsline {section}{\numberline {5.3}Increment 3: Staff Operations and Donation Completion}{42}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Objective and Scope}{42}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}Operational Sequence}{42}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Auditability}{45}{subsection.5.3.3}%
+\contentsline {section}{\numberline {5.4}Increment 4: Emergency Management}{45}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Objective and Scope}{45}{subsection.5.4.1}%
+\contentsline {section}{\numberline {5.5}Increment 5: Matching and Notifications}{48}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Objective and Scope}{48}{subsection.5.5.1}%
+\contentsline {section}{\numberline {5.6}Increment 6: Analytics, Administration, and Operations}{51}{section.5.6}%
+\contentsline {section}{\numberline {5.7}Increment Review}{53}{section.5.7}%
+\contentsline {chapter}{\numberline {6}Emergency Matching and Notification Intelligence}{54}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Matching Inputs}{54}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Blood Compatibility}{55}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Eligibility and Availability}{55}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Geographical Distance}{55}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Ranking and Tiered Expansion}{55}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Event Publication and Consistency}{57}{section.6.6}%
+\contentsline {section}{\numberline {6.7}Notification Channels}{57}{section.6.7}%
+\contentsline {section}{\numberline {6.8}Delivery State, Retry, and Idempotency}{57}{section.6.8}%
+\contentsline {section}{\numberline {6.9}Real-Time Updates}{57}{section.6.9}%
+\contentsline {section}{\numberline {6.10}Reliability Score and Fairness}{58}{section.6.10}%
+\contentsline {section}{\numberline {6.11}GDPR and Audit}{58}{section.6.11}%
+\contentsline {section}{\numberline {6.12}Failure Scenarios}{58}{section.6.12}%
+\contentsline {chapter}{\numberline {7}Industrialization, Testing, and Operational Readiness}{60}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Repository and Delivery Organization}{60}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Continuous Integration}{60}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Continuous Deployment}{61}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Container and Configuration Management}{61}{section.7.4}%
+\contentsline {section}{\numberline {7.5}k3s Deployment}{62}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Observability Architecture}{63}{section.7.6}%
+\contentsline {section}{\numberline {7.7}Automated Test Inventory}{64}{section.7.7}%
+\contentsline {subsection}{\numberline {7.7.1}Reproducibility Verification Performed for This Report}{64}{subsection.7.7.1}%
+\contentsline {section}{\numberline {7.8}Recommended Test Strategy}{65}{section.7.8}%
+\contentsline {subsection}{\numberline {7.8.1}Domain and Unit Tests}{65}{subsection.7.8.1}%
+\contentsline {subsection}{\numberline {7.8.2}Persistence and Integration Tests}{65}{subsection.7.8.2}%
+\contentsline {subsection}{\numberline {7.8.3}API and Security Tests}{66}{subsection.7.8.3}%
+\contentsline {subsection}{\numberline {7.8.4}Frontend Tests}{66}{subsection.7.8.4}%
+\contentsline {subsection}{\numberline {7.8.5}Operational Tests}{66}{subsection.7.8.5}%
+\contentsline {section}{\numberline {7.9}Security and Production Readiness}{66}{section.7.9}%
+\contentsline {section}{\numberline {7.10}Problems Encountered and Corrective Directions}{67}{section.7.10}%
+\contentsline {subsection}{\numberline {7.10.1}Build Reproducibility}{67}{subsection.7.10.1}%
+\contentsline {subsection}{\numberline {7.10.2}Frontend Dependency Setup}{67}{subsection.7.10.2}%
+\contentsline {subsection}{\numberline {7.10.3}Environment Completeness}{67}{subsection.7.10.3}%
+\contentsline {subsection}{\numberline {7.10.4}Evidence Gaps}{67}{subsection.7.10.4}%
+\contentsline {section}{\numberline {7.11}Improvement Roadmap}{68}{section.7.11}%
+\contentsline {chapter}{General Conclusion}{69}{chapter*.69}%
+\contentsline {chapter}{Bibliography}{70}{chapter*.70}%
